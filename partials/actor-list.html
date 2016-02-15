@@ -1,0 +1,44 @@
+<md-toolbar>
+  <div class="row md-inline-form search-div">
+    <md-content layout-padding>
+      <form name="myForm" ng-submit="submit()">
+        <md-input-container>
+          <label>Actor name:</label>
+          <input name="query" ng-model="query" ng-required="true">
+          <div ng-messages="myForm.query.$error">
+            <div ng-message="required">Insert an actor name</div>
+          </div>
+
+        </md-input-container>
+        <md-input-container>
+         <div layout>
+            <md-button class="md-raised md-primary" ng-disabled="myForm.$invalid" >Search for actors!</md-button>
+            <md-progress-circular md-mode="indeterminate" ng-show="loading" class="md-accent">
+          </div>
+        </md-input-container>
+      </form>
+     </md-content>
+  </div>
+</md-toolbar>
+
+<md-content class='md-padding results' layout="row" layout-wrap center>
+
+  <md-card class="result-card" ng-repeat="actor in actors">
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">{{actor.name}}</span>
+        <ul class="md-subhead" ng-repeat="movie in actor.known_for">
+          <li>{{movie.title}}</li>
+        </ul>
+      </md-card-title-text>
+      <md-card-title-media>
+        <div class="md-media-lg card-media">
+          <img ng-src="{{actor.photo_url}}" class="md-card-image" alt="Actor picture">
+        </div>
+      </md-card-title-media>
+    </md-card-title>
+    <md-card-actions layout="row" layout-align=" center">
+      <md-button ng-href="#/actors/{{actor.id}}">See movies</md-button>
+    </md-card-actions>
+  </md-card>
+</md-content>

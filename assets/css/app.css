@@ -1,0 +1,18 @@
+body {
+  font-family: roboto;
+  background-color: #f5f5f5;
+}
+
+.search-div {
+  text-align: center;
+}
+
+.results {
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
+.result-card {
+  width: 45%;
+  height: 256px;
+}
